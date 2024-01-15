@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs 12">
+                    <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid" (click)="addOrUpdateRecipe()">Save</button>
+                    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name : </label>
+                        <input 
+                            formControlName="name"
+                            type="text" 
+                            class="form-control" 
+                            name="name" 
+                            id="name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="imagePath">Image URL : </label>
+                        <input 
+                            formControlName="imagePath"
+                            type="text" 
+                            class="form-control" 
+                            name="imagePath" 
+                            id="imagePath"
+                            #imgUrlPtr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="imgUrlPtr.value || 'https://thumbs.dreamstime.com/b/not-available-red-rubber-stamp-over-white-background-87242466.jpg'" alt="" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="description">Description : </label>
+                        <textarea 
+                            formControlName="description"
+                            type="text" 
+                            class="form-control" 
+                            name="description" 
+                            id="description"
+                            rows="6"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="ingredients">
+                    <div 
+                        class="row"
+                        *ngFor="let ingredientCtr of getIngredientControls(); let i = index"
+                        [formGroupName]="i"
+                    >
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="number" class="form-control" formControlName="amount">
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="button" class="btn btn-success" (click)="addIngredients()">Add Ingredient</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
