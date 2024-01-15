@@ -9,3 +9,6 @@ Welcome to the Angular and Firebase Recipe Book! This application is a comprehen
 - Angular
 - Firebase (Firestore, Authentication, Authorization)
 - Core Angular Concepts (Components, Services, Modules, Routing)
+
+## Click Here 🚀🚀🚀
+- https://ng-my-recipe-book-3a72e.web.app/auth
